@@ -168,7 +168,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="44" />
+    <option name="x" value="514" />
     <option name="y" value="22" />
     <option name="width" value="1396" />
     <option name="height" value="878" />
@@ -206,6 +206,16 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="kaban" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaban" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaban" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -378,15 +388,15 @@
       <updated>1480065314267</updated>
       <workItem from="1480065319396" duration="4444000" />
       <workItem from="1480070815502" duration="1737000" />
-      <workItem from="1480075357189" duration="1658000" />
+      <workItem from="1480075357189" duration="1855000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7839000" />
+    <option name="totallyTimeSpent" value="8036000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="44" y="22" width="1396" height="878" extended-state="6" />
+    <frame x="514" y="22" width="1396" height="878" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24928367" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
