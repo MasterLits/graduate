@@ -1,0 +1,25 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  host: 127.0.0.1
+  port: 3306
+  username: root
+  password: root
+
+
+development:
+  <<: *default
+  database: lits
+
+
+test:
+  <<: *default
+  database: lits_test
+
+production:
+  <<: *default
+  database: lits
+  username: root
+  password: <%= ENV['APP_DATABASE_PASSWORD'] %>
+

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  body: MyText
+  cost: 1
+  date: 2016-11-25 12:52:16
+  location: MyString
+
+two:
+  body: MyText
+  cost: 1
+  date: 2016-11-25 12:52:16
+  location: MyString
