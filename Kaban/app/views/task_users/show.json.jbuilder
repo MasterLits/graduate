@@ -1,0 +1,1 @@
+json.partial! "task_users/task_user", task_user: @task_user
