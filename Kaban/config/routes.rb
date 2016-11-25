@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :task_users
+  resources :task_categories
   resources :admins
   resources :statuses
   resources :reviews

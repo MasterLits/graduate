@@ -1,6 +1,9 @@
 class Task < ApplicationRecord
   has_many :comments
   has_many :statuses
-  has_and_belongs_to_many :users
-  has_and_belongs_to_many :categories
+  has_many :task_categories
+  has_many :categories, :through => :task_categories
+  has_many :task_users
+  has_many :users, :through => :task_users
+
 end

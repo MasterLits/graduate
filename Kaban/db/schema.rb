@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161125110606) do
+ActiveRecord::Schema.define(version: 20161125195108) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "login"
@@ -63,6 +63,24 @@ ActiveRecord::Schema.define(version: 20161125110606) do
     t.index ["task_id"], name: "index_statuses_on_task_id", using: :btree
   end
 
+  create_table "task_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "task_id"
+    t.integer  "categories_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["categories_id"], name: "index_task_categories_on_categories_id", using: :btree
+    t.index ["task_id"], name: "index_task_categories_on_task_id", using: :btree
+  end
+
+  create_table "task_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "task_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_task_users_on_task_id", using: :btree
+    t.index ["user_id"], name: "index_task_users_on_user_id", using: :btree
+  end
+
   create_table "tasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "body",       limit: 65535
     t.integer  "cost"
@@ -70,20 +88,6 @@ ActiveRecord::Schema.define(version: 20161125110606) do
     t.string   "location"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
-  end
-
-  create_table "tasks_categories", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "task_id"
-    t.integer "category_id"
-    t.index ["category_id"], name: "index_tasks_categories_on_category_id", using: :btree
-    t.index ["task_id"], name: "index_tasks_categories_on_task_id", using: :btree
-  end
-
-  create_table "tasks_users", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "task_id"
-    t.integer "user_id"
-    t.index ["task_id"], name: "index_tasks_users_on_task_id", using: :btree
-    t.index ["user_id"], name: "index_tasks_users_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
