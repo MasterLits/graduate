@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   load_and_authorize_resource
-
+  before_action :set_task, only: [:show, :edit, :update, :destroy]
   # GET /tasks
   # GET /tasks.json
   def index

@@ -4,7 +4,8 @@ class Ability
   def initialize(user)
     user ||= User.new
     if user.has_role? :employer
-      can :manage, Task
+      alias_action :create, :read, :update, :destroy, :to => :crud
+      can :crud, Task
     elsif user.has_role? :worker
       can :read, Task
     else
