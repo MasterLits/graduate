@@ -32,7 +32,9 @@
 
   <div class="field">
     <%= f.label :photo %>
-    <%= f.text_field :photo %>
+    <% if controller.action_name = 'edit' %> 
+        <%= f.file_field :photo%>
+    <% end %>
   </div>
 
   <div class="field">

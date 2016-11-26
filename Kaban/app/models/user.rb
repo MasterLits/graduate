@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :task_users
   has_many :tasks, :through => :task_users
 
+  mount_uploader :photo, PhotoUploader
+
   ROLES = %i[employer worker]
 
   def roles=(roles)
