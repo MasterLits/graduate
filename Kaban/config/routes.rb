@@ -7,7 +7,10 @@ Rails.application.routes.draw do
   resources :reviews
   resources :categories
   resources :tasks
-  resources :users
+  resources :users do
+    resources :tasks
+  end
+
   resources :comments
   resources :messages
 

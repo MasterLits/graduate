@@ -5,7 +5,7 @@ class CreateTasks < ActiveRecord::Migration[5.0]
       t.integer :cost
       t.time :date
       t.string :location
-
+      t.belongs_to :user, index: true
       t.timestamps
     end
   end

@@ -24,8 +24,8 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
-
+    #@user = @task.users.create(user_params)
+    @user = @task.users.create(user_params)
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
@@ -71,4 +71,5 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:first_name, :last_name, :email, :login, :password, :photo, :tel, :role, :inn, :passport, :description)
     end
+
 end

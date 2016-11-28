@@ -65,10 +65,10 @@ ActiveRecord::Schema.define(version: 20161125205821) do
 
   create_table "task_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "task_id"
-    t.integer  "categories_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["categories_id"], name: "index_task_categories_on_categories_id", using: :btree
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_task_categories_on_category_id", using: :btree
     t.index ["task_id"], name: "index_task_categories_on_task_id", using: :btree
   end
 
@@ -86,8 +86,10 @@ ActiveRecord::Schema.define(version: 20161125205821) do
     t.integer  "cost"
     t.time     "date"
     t.string   "location"
+    t.integer  "user_id"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.index ["user_id"], name: "index_tasks_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
