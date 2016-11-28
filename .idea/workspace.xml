@@ -3,19 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a241f20a-d33f-4be0-b47d-6c83c7bf7113" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kaban/app/controllers/application_controller.rb" afterPath="$PROJECT_DIR$/Kaban/app/controllers/application_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kaban/app/controllers/tasks_controller.rb" afterPath="$PROJECT_DIR$/Kaban/app/controllers/tasks_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kaban/app/controllers/users_controller.rb" afterPath="$PROJECT_DIR$/Kaban/app/controllers/users_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kaban/app/models/ability.rb" afterPath="$PROJECT_DIR$/Kaban/app/models/ability.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kaban/app/models/task_user.rb" afterPath="$PROJECT_DIR$/Kaban/app/models/task_user.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kaban/app/models/user.rb" afterPath="$PROJECT_DIR$/Kaban/app/models/user.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kaban/app/views/tasks/index.html.erb" afterPath="$PROJECT_DIR$/Kaban/app/views/tasks/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kaban/app/views/users/show.html.erb" afterPath="$PROJECT_DIR$/Kaban/app/views/users/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kaban/config/routes.rb" afterPath="$PROJECT_DIR$/Kaban/config/routes.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kaban/db/migrate/20161125105058_create_users.rb" afterPath="$PROJECT_DIR$/Kaban/db/migrate/20161125105058_create_users.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kaban/db/migrate/20161125105216_create_tasks.rb" afterPath="$PROJECT_DIR$/Kaban/db/migrate/20161125105216_create_tasks.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kaban/db/migrate/20161125195047_create_task_categories.rb" afterPath="$PROJECT_DIR$/Kaban/db/migrate/20161125195047_create_task_categories.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kaban/db/schema.rb" afterPath="$PROJECT_DIR$/Kaban/db/schema.rb" />
     </list>
     <ignored path="kaban.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -79,8 +67,8 @@
       <file leaf-file-name="index.html.erb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Kaban/app/views/tasks/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="18" column="10" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
+            <state relative-caret-position="255">
+              <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -203,8 +191,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="56" />
-    <option name="y" value="80" />
+    <option name="x" value="46" />
+    <option name="y" value="22" />
     <option name="width" value="1394" />
     <option name="height" value="878" />
   </component>
@@ -561,15 +549,15 @@
       <workItem from="1480113569932" duration="7272000" />
       <workItem from="1480261297918" duration="6597000" />
       <workItem from="1480274095243" duration="1728000" />
-      <workItem from="1480276019758" duration="15704000" />
+      <workItem from="1480276019758" duration="16142000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49085000" />
+    <option name="totallyTimeSpent" value="49523000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="56" y="80" width="1394" height="878" extended-state="0" />
+    <frame x="46" y="22" width="1394" height="878" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32137734" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
@@ -1001,8 +989,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Kaban/app/views/tasks/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="18" column="10" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
+        <state relative-caret-position="255">
+          <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
           <folding />
         </state>
       </provider>
