@@ -17,14 +17,15 @@
 
   <tr>
 <% @category.tasks.each do |task| %>
-        <td><%= link_to task.user.email, task.user %></td>
-        <td><%=task.body %></td>
-        <td><%=task.cost %></td>
-        <td><%=task.location %></td>
-        </tr>
-    <%end%>
-    </tbody>
-  </table>
+    <td><%= link_to task.user.email, task.user %></td>
+    <td><%=task.body %></td>
+    <td><%=task.cost %></td>
+    <td><%=task.location %></td>
+        <td><%= link_to 'Присвоить', assign_task_users_path(task_id: task.id), method: :post %></td>
+    </tr>
+<%end%>
+</tbody>
+</table>
 
 
 
