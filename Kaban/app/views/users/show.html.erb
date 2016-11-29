@@ -50,5 +50,13 @@
   <%= @user.description %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+
+ <!--|-->
+
+<button type="button" class="btn btn-warning"><%= link_to 'Edit', edit_user_path(@user) %></button>
+<button type="button" class="btn btn-primary"><%= link_to 'Back', users_path %></button>
+
+<!--<%= link_to 'Edit', edit_user_path(@user) %>-->
+<!--<%= link_to 'Back', users_path %>-->
+ <!--|-->
+
