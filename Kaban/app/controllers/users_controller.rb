@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  skip_authorize_resource :only => :get_profile
+  load_and_authorize_resource
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -10,6 +12,11 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+
+  end
+
+  def get_profile
+    @profile=current_user
   end
 
   # GET /users/new
@@ -35,6 +42,18 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def assign_task
+    task = current_user.assign_task(params[:task_id])
+
+    flash[:notice] = "Task '#{task.body}' created"
+
+    redirect_to assigned_tasks_users_path
+  end
+
+  def assigned_tasks
+    @tasks = current_user.assigned_tasks
   end
 
   # PATCH/PUT /users/1

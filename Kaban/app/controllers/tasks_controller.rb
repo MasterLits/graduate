@@ -29,10 +29,9 @@ class TasksController < ApplicationController
   def create
 
     @task = current_user.tasks.create(task_params)
-    @task.user_id=current_user.id
     respond_to do |format|
       if @task.save
-        format.html { redirect_to current_user, notice: 'Task was successfully created.' }
+        format.html { redirect_to profile_path(current_user), notice: 'Task was successfully created.' }
         format.json { render :show, status: :created, location: current_user }
       else
         format.html { render :new }
@@ -47,7 +46,7 @@ class TasksController < ApplicationController
     respond_to do |format|
 
       if @task.update(task_params)
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
+        format.html { redirect_to profile_path(@task), notice: 'Task was successfully updated.' }
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit }
@@ -74,6 +73,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:body, :cost, :date, :location, :user_id)
+      params.require(:task).permit(:body, :cost, :date, :location, :user_id, :category_id)
     end
 end

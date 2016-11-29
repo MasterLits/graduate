@@ -1,5 +1,8 @@
 <p id="notice"><%= notice %></p>
-
+<p>
+  <strong>Категория:</strong>
+  <%= @task.category.body %>
+</p>
 <p>
   <strong>Body:</strong>
   <%= @task.body %>
@@ -20,5 +23,5 @@
   <%= @task.location %>
 </p>
 
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+<%= link_to 'Edit', edit_user_task_path(@task) %> |
+<%= link_to 'Back', profile_path(current_user) %>

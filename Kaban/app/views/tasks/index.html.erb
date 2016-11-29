@@ -18,9 +18,8 @@
     <% @tasks.each do |task| %>
 
       <tr>
-        <% task.users.each do |some| %>
-            <td><%= some.email %></td>
-        <% end %>
+        <td> <%=task.user.email%></td>
+
         <td><%= task.body %></td>
         <td><%= task.cost %></td>
         <td><%=DateTime.parse( task.created_at.to_s ).strftime(" %e %b %Y %H:%M ")%></td>

@@ -1,9 +1,37 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Body:</strong>
-  <%= @category.body %>
-</p>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+<h2>Категория </h2>
+  <strong><h3> <%= @category.body %></h3></strong>
+<table>
+  <thead>
+  <tr>
+    <td>Работодатель</td>
+    <td>Описание</td>
+    <td>Цена</td>
+    <td>Адрес</td>
+  </tr>
+  </thead>
+
+  <tbody>
+
+  <tr>
+<% @category.tasks.each do |task| %>
+        <td><%= link_to task.user.email, task.user %></td>
+        <td><%=task.body %></td>
+        <td><%=task.cost %></td>
+        <td><%=task.location %></td>
+        </tr>
+    <%end%>
+    </tbody>
+  </table>
+
+
+
+
+
+    <%= link_to 'Edit', edit_category_path(@category) %>
+    <%= link_to 'Back', categories_path %>
+
+    <%= link_to 'Back', categories_path %>
+

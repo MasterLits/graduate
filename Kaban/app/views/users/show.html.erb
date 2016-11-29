@@ -36,8 +36,13 @@
 </p>
 
 <p>
-  <strong>Роль:</strong>
-  <%= @user.roles_mask %>
+  <% if @user.roles_mask==1%>
+  <%= "Админ"%>
+      <% elsif @user.roles_mask==2%>
+  <%= "Является работодателем"%>
+  <% else%>
+      <%="Является работником"%>
+  <%end%>
 </p>
 
 <p>
@@ -50,31 +55,9 @@
   <%= @user.description %>
 </p>
 
-<h2>All Tasks</h2>
-<% @user.tasks.each do |task| %>
-    <ul>
-      <li><%= task.body %></li>
-    </ul>
-<% end %>
-
-<%= form_for ([@user, @user.tasks.build]) do |f| %>
-    <%= f.label :body %>
-    <%= f.text_field :body%>
-
-    <div class="field">
-      <%= f.label :cost %>
-      <%= f.number_field :cost %>
-    </div>
-
-    <div class="field">
-      <%= f.label :location %>
-      <%= f.text_field :location %>
-    </div>
-    <%= f.submit "Create Task" %>
-<% end %>
 
 
+    <%= link_to 'Edit', edit_user_path(@user) %>
+    <%= link_to 'Back', categories_path%>
 
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>

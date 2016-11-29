@@ -5,14 +5,22 @@ Rails.application.routes.draw do
   resources :admins
   resources :statuses
   resources :reviews
-  resources :categories
+  resources :categories do
+    resource :tasks
+  end
   resources :tasks
+
+  match "profile" => "users#get_profile", :as => 'profile', via: "get"
+
   resources :users do
     resources :tasks
+    post :assign_task, on: :collection
+    get :assigned_tasks, on: :collection
   end
 
   resources :comments
   resources :messages
+  root 'categories#index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

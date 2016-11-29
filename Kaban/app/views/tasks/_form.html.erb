@@ -11,6 +11,11 @@
     </div>
   <% end %>
 
+    <div class="field">
+      <%= f.label :category_id_id %>
+        <%=f.select :category_id, ['Выбирите категорию']+Category.all.collect{|s| [s.body, s.id]}%>
+      </div>
+
   <div class="field">
     <%= f.label :body %>
     <%= f.text_area :body %>
@@ -21,10 +26,6 @@
     <%= f.number_field :cost %>
   </div>
 
-  <div class="field">
-    <%= f.label :date %>
-    <%= f.time_select :date %>
-  </div>
 
   <div class="field">
     <%= f.label :location %>
