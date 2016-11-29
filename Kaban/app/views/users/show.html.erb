@@ -36,13 +36,9 @@
 </p>
 
 <p>
-  <% if @user.roles_mask==1%>
-  <%= "Админ"%>
-      <% elsif @user.roles_mask==2%>
-  <%= "Является работодателем"%>
-  <% else%>
-      <%="Является работником"%>
-  <%end%>
+  <strong>Роль:</strong>
+  <%= @user.role %>
+
 </p>
 
 <p>

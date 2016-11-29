@@ -38,9 +38,10 @@
 <p>
 
   <strong>Роль:</strong>
-  <% if @profile.roles_mask==1 %>
-      <%="Админ" %>
-  <% end %>
+
+      <%=@profile.role%>
+
+
 </p>
 
 <p>
@@ -53,7 +54,7 @@
   <strong>Description:</strong>
   <%= @profile.description %>
 </p>
-<% if @profile.roles_mask==2 %>
+<% if @profile.role=="работодатель" %>
 <h2>All Tasks</h2>
 <% @profile.tasks.each do |task| %>
     <ul>
