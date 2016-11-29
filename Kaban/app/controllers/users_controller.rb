@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+
+
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -10,6 +12,11 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+
+  end
+
+  def get_profile
+    @profile=current_user
   end
 
   # GET /users/new
@@ -24,8 +31,8 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
-
+    #@user = @task.users.create(user_params)
+    @user = @task.users.create(user_params)
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
@@ -35,6 +42,18 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def assign_task
+    current_user.assign_task(params[:task_id])
+
+    flash[:notice] = "Task  created"
+
+    redirect_to profile_path
+  end
+
+  def assigned_tasks
+    @tasks = current_user.assigned_tasks
   end
 
   # PATCH/PUT /users/1
@@ -71,4 +90,5 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:first_name, :last_name, :email, :login, :password, :photo, :tel, :role, :inn, :passport, :description)
     end
+
 end

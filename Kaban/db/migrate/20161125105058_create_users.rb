@@ -9,6 +9,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :passport
       t.text :description
 
+
       t.timestamps
     end
   end

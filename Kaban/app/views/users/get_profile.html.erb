@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @profile.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @profile.last_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @profile.email %>
+</p>
+
+
+
+
+<p>
+  <strong>Photo:</strong>
+  <%= @profile.photo %>
+</p>
+
+<p>
+  <strong>Tel:</strong>
+  <%= @profile.tel %>
+</p>
+
+
+
+<p>
+  <strong>Inn:</strong>
+  <%= @profile.inn %>
+</p>
+
+<p>
+
+  <strong>Роль:</strong>
+  <% if @profile.roles_mask==1 %>
+      <%="Админ" %>
+  <% end %>
+</p>
+
+<p>
+  <strong>Passport:</strong>
+  <%= @profile.passport %>
+
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @profile.description %>
+</p>
+<% if @profile.roles_mask==2 %>
+<h2>All Tasks</h2>
+<% @profile.tasks.each do |task| %>
+    <ul>
+      <li> <%= link_to task.body, task_path(task) %></li>
+     <li> <%= link_to 'Удалить', task, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+    </ul>
+<% end %>
+<%=render template: "users/assigned_tasks.html.erb" %>
+    <%= link_to 'Создать задание', new_user_task_path(@profile) %>
+<%else%>
+    <h2>Assigned Tasks</h2>
+    <% @profile.assigned_tasks.each do |task| %>
+        <%= task.body %>
+        
+        <% end %>
+    <% end %>
+<p>
+  <%= link_to 'Редактирование инфорамации о себе', edit_user_path(@profile) %>
+</p>
+
+<p>
+  <%= link_to 'Редактирование Профиля', edit_user_registration_path(@profile) %>
+</p>

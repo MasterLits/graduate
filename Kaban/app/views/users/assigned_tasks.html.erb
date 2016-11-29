@@ -1,0 +1,14 @@
+<tbody>
+  <% current_user.assigned_tasks.each do |task| %>
+    <tbody>
+    <tr>
+      <td><%=  task.body %></td>
+      <td> <%= task.date %></td>
+      <td><%=  link_to 'Show', user_task_path(task) %></td>
+      <td><%=  link_to 'Edit', task %></td>
+      <td> <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<% end %>
+    </tr>
+
+</tbody>
+</table>

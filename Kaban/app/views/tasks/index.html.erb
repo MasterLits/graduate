@@ -13,18 +13,24 @@
     </tr>
   </thead>
 
+
   <tbody>
     <% @tasks.each do |task| %>
+
       <tr>
+        <td> <%=task.user.email%></td>
+
         <td><%= task.body %></td>
         <td><%= task.cost %></td>
-        <td><%= task.date %></td>
+        <td><%=DateTime.parse( task.created_at.to_s ).strftime(" %e %b %Y %H:%M ")%></td>
         <td><%= task.location %></td>
+
         <td><%= link_to 'Show', task %></td>
         <td><%= link_to 'Edit', edit_task_path(task) %></td>
         <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
+
   </tbody>
 </table>
 
