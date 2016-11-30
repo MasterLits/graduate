@@ -31,7 +31,7 @@ class TasksController < ApplicationController
     @task = current_user.tasks.create(task_params)
     respond_to do |format|
       if @task.save
-        format.html { redirect_to profile_path(current_user), notice: 'Task was successfully created.' }
+        format.html { redirect_to profile_path, notice: 'Task was successfully created.' }
         format.json { render :show, status: :created, location: current_user }
       else
         format.html { render :new }
@@ -60,7 +60,7 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     respond_to do |format|
-      format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
+      format.html { redirect_to profile_path, notice: 'Task was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

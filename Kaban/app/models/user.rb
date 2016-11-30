@@ -11,10 +11,11 @@ class User < ApplicationRecord
   has_many :tasks
 
 
+  mount_uploader :photo, PhotoUploader
 
 
 
-  ROLES = %i[admin работодатель работник].freeze
+  ROLES = %i[работодатель работник].freeze
 
   def assign_task(task_id)
     assigned_users_tasks.create(task_id: task_id)

@@ -13,7 +13,7 @@
   <p> <% if user_signed_in? %>
       <%= current_user.email %>
       <%= link_to "sign out",destroy_user_session_path, method: :delete   %>
-  <%=link_to "Профиль", profile_path(current_user)%>
+  <%=link_to "Профиль", profile_path%>
   <%else %>
 
       <%= link_to "log_in",  new_user_session_path  %>

@@ -23,5 +23,7 @@
   <%= @task.location %>
 </p>
 
-<%= link_to 'Edit', edit_user_task_path(@task) %> |
-<%= link_to 'Back', profile_path(current_user) %>
+
+<li> <%= link_to 'Редактировать', edit_task_path(@task) %></li>
+<li> <%= link_to 'Удалить', @task, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+
