@@ -5,7 +5,7 @@ class Ability
     can :manage, :all if user.role == "admin"
     if user.role == "работодатель"
       can :read, User
-      can [:edit,:update], User do |user_some|
+      can [:edit,:update, :edit_profile,:get_profile], User do |user_some|
         user_some.id==user.id
       end
       can :read, Task
@@ -15,16 +15,14 @@ class Ability
       end
       can :read, Category
     elsif user.role == "работник"
-      can [:edit,:update], User do |user_some|
+      can [:edit,:update, :edit_profile, :get_profile], User do |user_some|
         user_some.id==user.id
       end
       can :read, Category
       can :read, User
       can :read, Task
-      can :create, Task
-      can [:edit,:update], User do |user_some|
-        user_some.id==user.id
-      end
+
+      can [:assign_task,:assigned_tasks ], User
     else
       can :read, :all
     end
