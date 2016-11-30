@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     @user = @task.users.create(user_params)
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to profile_path(current_user), notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -43,15 +43,15 @@ class UsersController < ApplicationController
       end
     end
   end
-
   def assign_task
     current_user.assign_task(params[:task_id])
     flash[:notice] = "Task created"
-    redirect_to @profile_path
+   redirect_to profile_path
   end
 
   def assigned_tasks
     @tasks = current_user.assigned_tasks
+    redirect_to profile_path
   end
 
   # PATCH/PUT /users/1
