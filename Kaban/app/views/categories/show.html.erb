@@ -17,22 +17,28 @@
 
   <tr>
 <% @category.tasks.each do |task| %>
-    <td><%= link_to task.user.email, task.user %></td>
+    <% if current_user == nil || current_user.id != task.user_id %>      
+      <td><%= link_to task.user.email, task.user %></td>
+    <% else %>  
+      <td><%= link_to task.user.email, profile_path %> </td>
+    <% end %>
     <td><%=task.body %></td>
     <td><%=task.cost %></td>
-    <td><%=task.location %></td>
-        <td><%= link_to 'Присвоить', assign_task_users_path(task_id: task.id), method: :post %></td>
+    <td><%=task.location %></td>  
+      <% if current_user == nil%> 
+        <td> Вы не авторизированы</td>     
+      <% elsif current_user.role == "работник"%>
+        <td><%= link_to 'Присвоить', assign_task_users_path(task_id: task.id), method: :post %></td>        
+      <% end%>
         </td>
     </tr>
 <%end%>
 </tbody>
 </table>
 
-
-
-
-
-    <%= link_to 'Edit', edit_category_path(@category) %>
-    <%= link_to 'Back', categories_path %>
-
-
+<% if current_user == nil || current_user.role == "работодатель" || current_user.role == "работник"%> 
+      <%= link_to 'Back', categories_path %>
+    <%elsif current_user.role == "admin"%>
+      <%= link_to 'Back', categories_path %>
+      <%= link_to 'Edit', edit_category_path(@category) %>
+    <% end %>

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-
-
+  skip_authorize_resource :only => :get_profile
+  load_and_authorize_resource
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -46,10 +46,8 @@ class UsersController < ApplicationController
 
   def assign_task
     current_user.assign_task(params[:task_id])
-
-    flash[:notice] = "Task  created"
-
-    redirect_to profile_path
+    flash[:notice] = "Task created"
+    redirect_to @profile_path
   end
 
   def assigned_tasks
@@ -61,7 +59,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to profile_path, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }

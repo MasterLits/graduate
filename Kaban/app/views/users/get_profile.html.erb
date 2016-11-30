@@ -20,7 +20,7 @@
 
 <p>
   <strong>Photo:</strong>
-  <%= @profile.photo %>
+  <%=image_tag @profile.photo, :size=>"100x100" %>
 </p>
 
 <p>
@@ -38,9 +38,10 @@
 <p>
 
   <strong>Роль:</strong>
-  <% if @profile.roles_mask==1 %>
-      <%="Админ" %>
-  <% end %>
+
+      <%=@profile.role%>
+
+
 </p>
 
 <p>
@@ -53,12 +54,11 @@
   <strong>Description:</strong>
   <%= @profile.description %>
 </p>
-<% if @profile.roles_mask==2 %>
-<h2>All Tasks</h2>
+<% if @profile.role=="работодатель" %>
+<h2>Все задания</h2>
 <% @profile.tasks.each do |task| %>
     <ul>
       <li> <%= link_to task.body, task_path(task) %></li>
-     <li> <%= link_to 'Удалить', task, method: :delete, data: { confirm: 'Are you sure?' } %></li>
     </ul>
 <% end %>
 <%=render template: "users/assigned_tasks.html.erb" %>
@@ -71,7 +71,7 @@
         <% end %>
     <% end %>
 <p>
-  <%= link_to 'Редактирование инфорамации о себе', edit_user_path(@profile) %>
+  <%= link_to 'Редактирование инфорамации о себе', edit_user_path(current_user) %>
 </p>
 
 <p>

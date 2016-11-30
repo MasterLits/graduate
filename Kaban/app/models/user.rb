@@ -13,24 +13,14 @@ class User < ApplicationRecord
 
   mount_uploader :photo, PhotoUploader
 
-  ROLES = %i[admin employer worker]
 
-  def roles=(roles)
-    roles = [*roles].map { |r| r.to_sym }
-    self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.inject(0, :+)
-  end
+
+  ROLES = %i[admin работодатель работник].freeze
 
   def assign_task(task_id)
     assigned_users_tasks.create(task_id: task_id)
   end
 
-  def roles
-    ROLES.reject do |r|
-      ((roles_mask.to_i || 0) & 2**ROLES.index(r)).zero?
-    end
-  end
 
-  def has_role?(role)
-    roles.include?(role)
-  end
+
 end
