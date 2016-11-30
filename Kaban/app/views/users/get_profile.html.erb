@@ -20,7 +20,7 @@
 
 <p>
   <strong>Photo:</strong>
-  <%= @profile.photo %>
+  <%=image_tag @profile.photo, :size=>"100x100" %>
 </p>
 
 <p>
@@ -55,7 +55,7 @@
   <%= @profile.description %>
 </p>
 <% if @profile.role=="работодатель" %>
-<h2>All Tasks</h2>
+<h2>Все задания</h2>
 <% @profile.tasks.each do |task| %>
     <ul>
       <li> <%= link_to task.body, task_path(task) %></li>
@@ -67,8 +67,13 @@
     <h2>Assigned Tasks</h2>
     <% @profile.assigned_tasks.each do |task| %>
         <%= task.body %>
+        
         <% end %>
     <% end %>
+<p>
+  <%= link_to 'Редактирование инфорамации о себе', edit_user_path(current_user) %>
+</p>
 
-<%= link_to 'Edit', edit_user_path(@profile) %>
-
+<p>
+  <%= link_to 'Редактирование Профиля', edit_user_registration_path(@profile) %>
+</p>

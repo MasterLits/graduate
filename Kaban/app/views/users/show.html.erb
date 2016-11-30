@@ -20,7 +20,7 @@
 
 <p>
   <strong>Photo:</strong>
-  <%= @user.photo %>
+  <%=image_tag @user.photo, :size=>"100x100" %>
 </p>
 
 <p>
@@ -51,6 +51,9 @@
   <%= @user.description %>
 </p>
 
+  <%if current_user==@user%>
+    <%= link_to 'Редактировать', edit_user_path(@user) %> 
+  <%end%>
 
     <%= link_to 'Back', categories_path%>
 

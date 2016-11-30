@@ -12,23 +12,23 @@
   <% end %>
 
     <div class="field">
-      <%= f.label :category_id_id %>
+      <%= f.label :category_id_id, "Выберите категорию" %>
         <%=f.select :category_id, ['Выбирите категорию']+Category.all.collect{|s| [s.body, s.id]}%>
       </div>
 
   <div class="field">
-    <%= f.label :body %>
+    <%= f.label :body, "Описание"%>
     <%= f.text_area :body %>
   </div>
 
   <div class="field">
-    <%= f.label :cost %>
+    <%= f.label :cost, "Цена" %>
     <%= f.number_field :cost %>
   </div>
 
 
   <div class="field">
-    <%= f.label :location %>
+    <%= f.label :location, "Место" %>
     <%= f.text_field :location %>
   </div>
 

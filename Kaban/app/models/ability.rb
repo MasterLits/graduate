@@ -22,6 +22,9 @@ class Ability
       can :read, User
       can :read, Task
       can :create, Task
+      can [:edit,:update], User do |user_some|
+        user_some.id==user.id
+      end
     else
       can :read, :all
     end
