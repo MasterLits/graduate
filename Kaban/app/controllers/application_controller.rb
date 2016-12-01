@@ -1,9 +1,15 @@
 class ApplicationController < ActionController::Base
-
+  protect_from_forgery with: :exception
     rescue_from CanCan::AccessDenied do |exception|
     redirect_to '/422.html'
     end
-  protect_from_forgery with: :exception
+
+
+    def re_redirect_to(location, status = 303)
+      response.location = location
+      response.status = status
+    end
+
   before_action :configure_permitted_parameters, if: :devise_controller?
   protected
 
@@ -11,9 +17,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up) {|u| u.permit(:email, :password, :password_confirmation, :current_password, :role)}
     devise_parameter_sanitizer.permit(:account_update) {|u| u.permit(:email, :password, :password_confirmation, :current_password, :role)}
   end
-    protected
-    def after_sign_up_path_for(resource)
-      redirect_to edit_user_path(current_user)
-    end
+
+
+
 
 end

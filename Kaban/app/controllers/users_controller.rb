@@ -37,8 +37,7 @@ class UsersController < ApplicationController
     @user = @task.users.create(user_params)
     respond_to do |format|
       if @user.save
-        format.html { redirect_to profile_path(current_user), notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
+        flash[:notice]="Успешная регистрация"
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -47,7 +46,7 @@ class UsersController < ApplicationController
   end
   def assign_task
     current_user.assign_task(params[:task_id])
-    flash[:notice] = "Task created"
+    flash[:notice] = "Вы взялись выполнять новое задание "
    redirect_to profile_path
   end
 
