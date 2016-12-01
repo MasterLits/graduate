@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
-
-    rescue_from CanCan::AccessDenied do |exception|
-    redirect_to '/422.html'
+  include Errors::RescueError
+  rescue_from CanCan::AccessDenied do |exception|
+  redirect_to '/422.html'
     end
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?

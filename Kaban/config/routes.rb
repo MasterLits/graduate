@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     resource :tasks
   end
   resources :tasks
+  # config/routes.rb
+  %w( 404 422 500 ).each do |code|
+    get code, :to => "errors#show", :code => code
+  end
 
   match "profile" => "users#get_profile", :as => 'profile', via: "get"
 
