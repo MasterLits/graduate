@@ -9,7 +9,9 @@ class User < ApplicationRecord
   has_many :assigned_users_tasks
   has_many :assigned_tasks, :through => :assigned_users_tasks, source: :task
   has_many :tasks
-
+  validates :first_name, :last_name, :tel, presence: true
+  validates :first_name, :last_name, length: { minimum: 2}
+  validates :tel, format: { with: /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/ }
 
   mount_uploader :photo, PhotoUploader
 
