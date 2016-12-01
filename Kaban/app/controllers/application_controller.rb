@@ -1,8 +1,13 @@
 class ApplicationController < ActionController::Base
+
   protect_from_forgery with: :exception
     rescue_from CanCan::AccessDenied do |exception|
     redirect_to '/422.html'
-    end
+end
+  include Errors::RescueError
+  rescue_from CanCan::AccessDenied do |exception|
+  redirect_to '/422.html'
+   end
 
 
     def re_redirect_to(location, status = 303)

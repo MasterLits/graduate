@@ -13,7 +13,7 @@
 
     <div class="field">
       <%= f.label :category_id_id, "Выберите категорию" %>
-        <%=f.select :category_id, ['Выбирите категорию']+Category.all.collect{|s| [s.body, s.id]}%>
+        <%=f.select :category_id, ['Выбeрите категорию']+Category.all.collect{|s| [s.body, s.id]}%>
       </div>
     <div class="field">
       <%= f.label :title, "Заголовок" %>
