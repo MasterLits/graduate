@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161201100112) do
+ActiveRecord::Schema.define(version: 20161201154520) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "login"
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 20161201100112) do
     t.string   "last_name"
     t.binary   "photo",                  limit: 65535
     t.string   "tel"
-    t.integer  "inn"
+    t.string   "inn"
     t.string   "passport"
     t.text     "description",            limit: 65535
     t.datetime "created_at",                                        null: false

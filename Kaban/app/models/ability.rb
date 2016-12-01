@@ -24,7 +24,8 @@ class Ability
 
       can [:assign_task,:assigned_tasks ], User
     else
-      can :read, :all
+      can :read, Task
+      can :read,   Category
     end
   end
 end
