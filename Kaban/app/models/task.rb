@@ -8,7 +8,7 @@ class Task < ApplicationRecord
   validates :body, :cost, :location, :title, :category, presence: true
 
   def self.search(search)
-    where("title LIKE ?", "%#{search}%")
+    where("body LIKE ?", "%#{search}%")
   end
 
 end
