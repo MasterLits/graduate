@@ -7,8 +7,9 @@ class Task < ApplicationRecord
   belongs_to :category
   validates :body, :cost, :location, :title, :category, presence: true
 
-  def self.search(search)
-    where("body LIKE ?", "%#{search}%")
-  end
+
+    def self.search(search)
+      where("body LIKE ? OR title LIKE ? ", "%#{search}%", "%#{search}%")
+    end
 
 end
