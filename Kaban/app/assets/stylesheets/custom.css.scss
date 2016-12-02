@@ -1,5 +1,18 @@
 @import "bootstrap";
 
+//Brand Corors
+
+$primary-color:   #96ceb4;
+$text-color:      #1F242A;
+$header-color:    #0E426C;
+$blue-color:      #546F8B;
+$sky-color:       #6586A7;
+$cherry-color:    #5F021F;
+$sun-color:       #ffcc5c;
+$lime-color:      #ffeead;
+$green-color:     #96ceb4;
+$emerald-color:   #88d8b0;
+
 //
 //button > a {
 //  color: #fff !important;
@@ -9,6 +22,15 @@
 //    text-decoration: none;
 //  }
 //}
+.navbar-inverse{
+  background-color: $sky-color;
+}
+
+img.img-circle{
+  width: 70px;
+  height: 70px;
+}
+
 //
 //
 /* GLOBAL STYLES
@@ -17,7 +39,8 @@
 
 body {
   padding-bottom: 40px;
-  color: #5a5a5a;
+  color: sky-color;
+  //color: red;
 }
 
 
