@@ -1,0 +1,3 @@
+<% if @task_notifications.present? %>
+    <%= link_to "You have #{@task_notifications.count} notifications", task_notifications_path %>
+<% end %>

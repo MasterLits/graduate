@@ -13,11 +13,14 @@ class UsersController < ApplicationController
   def show
 
   end
+
   def edit_profile
   end
 
   def get_profile
     @profile=current_user
+
+    @task_notifications = current_user.task_notifications
   end
 
 
@@ -44,10 +47,11 @@ class UsersController < ApplicationController
       end
     end
   end
+
   def assign_task
     current_user.assign_task(params[:task_id])
     flash[:notice] = "Вы взялись выполнять новое задание "
-   redirect_to profile_path
+    redirect_to profile_path
   end
 
   def assigned_tasks
@@ -79,14 +83,14 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :login, :password, :photo, :tel, :role, :inn, :passport, :description)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :email, :login, :password, :photo, :tel, :role, :inn, :passport, :description)
+  end
 
 end

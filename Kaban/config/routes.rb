@@ -26,5 +26,7 @@ Rails.application.routes.draw do
   resources :messages
   root 'categories#index'
 
+  resources :task_notifications, only: %i{index show}
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
