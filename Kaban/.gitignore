@@ -14,8 +14,9 @@
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
+/public/uploads/user/*
 !/log/.keep
 !/tmp/.keep
-.idea
+.idea*.*
 # Ignore Byebug command history file.
 .byebug_history

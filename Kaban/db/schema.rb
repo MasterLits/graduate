@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161125205821) do
+ActiveRecord::Schema.define(version: 20161201154520) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "login"
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 20161125205821) do
     t.string   "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "assigned_users_tasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "task_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_assigned_users_tasks_on_task_id", using: :btree
+    t.index ["user_id"], name: "index_assigned_users_tasks_on_user_id", using: :btree
   end
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -63,31 +72,18 @@ ActiveRecord::Schema.define(version: 20161125205821) do
     t.index ["task_id"], name: "index_statuses_on_task_id", using: :btree
   end
 
-  create_table "task_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "task_id"
-    t.integer  "categories_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["categories_id"], name: "index_task_categories_on_categories_id", using: :btree
-    t.index ["task_id"], name: "index_task_categories_on_task_id", using: :btree
-  end
-
-  create_table "task_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "task_id"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["task_id"], name: "index_task_users_on_task_id", using: :btree
-    t.index ["user_id"], name: "index_task_users_on_user_id", using: :btree
-  end
-
   create_table "tasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text     "body",       limit: 65535
+    t.integer  "category_id"
+    t.text     "body",        limit: 65535
     t.integer  "cost"
     t.time     "date"
     t.string   "location"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.integer  "user_id"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "title"
+    t.index ["category_id"], name: "index_tasks_on_category_id", using: :btree
+    t.index ["user_id"], name: "index_tasks_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -95,7 +91,7 @@ ActiveRecord::Schema.define(version: 20161125205821) do
     t.string   "last_name"
     t.binary   "photo",                  limit: 65535
     t.string   "tel"
-    t.integer  "inn"
+    t.string   "inn"
     t.string   "passport"
     t.text     "description",            limit: 65535
     t.datetime "created_at",                                        null: false
@@ -110,7 +106,7 @@ ActiveRecord::Schema.define(version: 20161125205821) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.integer  "roles_mask"
+    t.string   "role"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

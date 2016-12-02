@@ -6,23 +6,24 @@ class User < ApplicationRecord
   has_many :messages
   has_many :comments
   has_many :reviews
-  has_many :task_users
-  has_many :tasks, :through => :task_users
+  has_many :assigned_users_tasks
+  has_many :assigned_tasks, :through => :assigned_users_tasks, source: :task
+  has_many :tasks
+  validates :first_name, :last_name, :tel, :passport, presence: true
+  validates :first_name, :last_name, length: { minimum: 2}
+  validates :inn, presence: true, length: { minimum: 12}
+  validates  :passport, presence: true, length: { minimum: 8, maximum: 10}
+  validates :role,  presence: true
+  mount_uploader :photo, PhotoUploader
 
-  ROLES = %i[employer worker]
 
-  def roles=(roles)
-    roles = [*roles].map { |r| r.to_sym }
-    self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.inject(0, :+)
+
+  ROLES = %i[работодатель работник].freeze
+
+  def assign_task(task_id)
+    assigned_users_tasks.create(task_id: task_id)
   end
 
-  def roles
-    ROLES.reject do |r|
-      ((roles_mask.to_i || 0) & 2**ROLES.index(r)).zero?
-    end
-  end
 
-  def has_role?(role)
-    roles.include?(role)
-  end
+
 end

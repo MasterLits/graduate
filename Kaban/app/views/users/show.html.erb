@@ -20,7 +20,7 @@
 
 <p>
   <strong>Photo:</strong>
-  <%= @user.photo %>
+  <%=image_tag @user.photo, :size=>"100x100" %>
 </p>
 
 <p>
@@ -37,7 +37,8 @@
 
 <p>
   <strong>Роль:</strong>
-  <%= @user.roles_mask %>
+  <%= @user.role %>
+
 </p>
 
 <p>
@@ -50,13 +51,10 @@
   <%= @user.description %>
 </p>
 
+  <%if current_user==@user%>
+    <%= link_to 'Редактировать', edit_user_path(@user) %>
+  <%end%>
 
- <!--|-->
+    <%= link_to 'На главную', categories_path%>
 
-<button type="button" class="btn btn-warning"><%= link_to 'Edit', edit_user_path(@user) %></button>
-<button type="button" class="btn btn-primary"><%= link_to 'Back', users_path %></button>
-
-<!--<%= link_to 'Edit', edit_user_path(@user) %>-->
-<!--<%= link_to 'Back', users_path %>-->
- <!--|-->
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Kaban</title>
+    <title>Двое из ларца</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,9 +9,19 @@
   </head>
 
   <body>
-  <% if user_signed_in? %>
-      <%= link_to "sign out",destroy_user_session_path, method: :delete   %>
+  <%= link_to "Главная",  categories_path  %>
+  <p> <% if user_signed_in? %>
+      <%= current_user.email %>
+      <%= link_to "Выйти",destroy_user_session_path, method: :delete   %>
+  <%=link_to "Профиль", profile_path%>
+  <%else %>
+
+      <%= link_to "Войти",  new_user_session_path  %>
+
+
   <% end %>
+
+  </p>
   <br>
     <%= yield %>
   </body>

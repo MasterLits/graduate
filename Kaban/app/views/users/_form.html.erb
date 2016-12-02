@@ -11,6 +11,7 @@
     </div>
   <% end %>
 
+
   <div class="field">
     <%= f.label :first_name %>
     <%= f.text_field :first_name %>
@@ -20,17 +21,15 @@
     <%= f.label :last_name %>
     <%= f.text_field :last_name %>
   </div>
-      <% for role in User::ROLES %>
-           <%= check_box_tag "user[roles][#{role}]", role, @user.roles.include?(role), {:name => "user[roles][]"}%>
-            <%= label_tag "user_roles_#{role}", role.to_s.humanize%><br />
-         <% end %>
-      <%= hidden_field_tag "user[roles][]", "" %>
+
 
 
 
   <div class="field">
     <%= f.label :photo %>
-    <%= f.text_field :photo %>
+    <% if controller.action_name = 'edit' %> 
+        <%= f.file_field :photo%>
+    <% end %>
   </div>
 
   <div class="field">
@@ -56,7 +55,7 @@
   <div class="field">
     <%= f.label :description %>
     <%= f.text_field :description %>
-  </div>
+  </div> 
 
   <div class="actions">
     <%= f.submit %>

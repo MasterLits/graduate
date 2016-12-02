@@ -20,11 +20,35 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
-    <% for role in User::ROLES %>
-        <%= check_box_tag "user[roles][#{role}]", role, @user.roles.include?(role), {:name => "user[roles][]"}%>
-        <%= label_tag "user_roles_#{role}", role.to_s.humanize %><br />
-    <% end %>
-    <%= hidden_field_tag "user[roles][]", "" %>
+    <%= f.collection_select :role, User::ROLES, :to_s, lambda{|i| i.to_s.humanize} %>
+
+  <div class="field">
+    <br />
+    <%= f.label :telephone %><br />
+    <%= f.text_field :tel %>
+  </div>
+
+  <div class="field">
+    <br />
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <br />
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+    <div class="field">
+      <br />
+      <%= f.label :passport %><br />
+      <%= f.text_field :passport %>
+    </div>
+    <div class="field">
+      <br />
+      <%= f.label :inn %><br />
+      <%= f.text_field :inn %>
+    </div>
 
 
   <div class="actions">
