@@ -5,7 +5,13 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     @tasks = Task.all
+    if params[:search]
+      @tasks = Task.search(params[:search]).order("created_at DESC")
+    else
+      @tasks = Task.all.order('created_at DESC')
+    end
   end
+
 
   # GET /tasks/1
   # GET /tasks/1.json
@@ -16,8 +22,6 @@ class TasksController < ApplicationController
   def new
 
     @task = Task.new
-
-
   end
 
   # GET /tasks/1/edit
@@ -66,13 +70,13 @@ class TasksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_task
-      @task = Task.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_task
+    @task = Task.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def task_params
-      params.require(:task).permit(:body, :cost, :date, :location, :user_id, :category_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def task_params
+    params.require(:task).permit(:body, :cost, :date, :location, :title, :user_id, :category_id)
+  end
 end

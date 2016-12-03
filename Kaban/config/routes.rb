@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     resource :tasks
   end
   resources :tasks
+  # config/routes.rb
+  %w( 404 422 500 ).each do |code|
+    get code, :to => "errors#show", :code => code
+  end
 
   match "profile" => "users#get_profile", :as => 'profile', via: "get"
 
@@ -16,11 +20,14 @@ Rails.application.routes.draw do
     resources :tasks
     post :assign_task, on: :collection
     get :assigned_tasks, on: :collection
+    delete :delete_user_assigned_task, on: :collection
   end
 
   resources :comments
   resources :messages
   root 'categories#index'
+
+  resources :task_notifications, only: %i{index show}
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

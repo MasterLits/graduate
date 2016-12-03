@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Kaban</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>Двое из ларца</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-  <%= link_to "Главная",  categories_path  %>
-  <p> <% if user_signed_in? %>
+<body>
+<%= link_to "Главная", categories_path %>
+<p>
+  <% if user_signed_in? %>
+      <%= render partial: 'task_notifications/notifications_nav' %>
       <%= current_user.email %>
-      <%= link_to "sign out",destroy_user_session_path, method: :delete   %>
-  <%=link_to "Профиль", profile_path%>
-  <%else %>
+      <%= link_to "Выйти", destroy_user_session_path, method: :delete %>
+      <%= link_to "Профиль", profile_path %>
+  <% else %>
 
-      <%= link_to "log_in",  new_user_session_path  %>
+      <%= link_to "Войти", new_user_session_path %>
 
 
   <% end %>
 
-  </p>
-  <br>
-    <%= yield %>
-  </body>
+</p>
+<br>
+<%= yield %>
+</body>
 </html>

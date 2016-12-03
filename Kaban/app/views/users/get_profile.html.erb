@@ -1,17 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>First name:</strong>
+  <strong>Имя:</strong>
   <%= @profile.first_name %>
 </p>
 
 <p>
-  <strong>Last name:</strong>
+  <strong>Фамилия:</strong>
   <%= @profile.last_name %>
 </p>
 
 <p>
-  <strong>Email:</strong>
+  <strong>E-mail:</strong>
   <%= @profile.email %>
 </p>
 
@@ -19,19 +19,19 @@
 
 
 <p>
-  <strong>Photo:</strong>
-  <%=image_tag @profile.photo, :size=>"100x100" %>
+  <strong>Фото:</strong>
+  <%= image_tag @profile.photo, :size => "100x100" %>
 </p>
 
 <p>
-  <strong>Tel:</strong>
+  <strong>Телефон:</strong>
   <%= @profile.tel %>
 </p>
 
 
 
 <p>
-  <strong>Inn:</strong>
+  <strong>Идентификационный номер:</strong>
   <%= @profile.inn %>
 </p>
 
@@ -39,37 +39,48 @@
 
   <strong>Роль:</strong>
 
-      <%=@profile.role%>
+  <%= @profile.role %>
 
 
 </p>
 
 <p>
-  <strong>Passport:</strong>
+  <strong>Номер и серия пасспорта:</strong>
   <%= @profile.passport %>
 
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong>О себе:</strong>
   <%= @profile.description %>
 </p>
 <% if @profile.role=="работодатель" %>
-<h2>Все задания</h2>
-<% @profile.tasks.each do |task| %>
-    <ul>
-      <li> <%= link_to task.body, task_path(task) %></li>
-    </ul>
-<% end %>
-<%=render template: "users/assigned_tasks.html.erb" %>
-    <%= link_to 'Создать задание', new_user_task_path(@profile) %>
-<%else%>
-    <h2>Assigned Tasks</h2>
-    <% @profile.assigned_tasks.each do |task| %>
-        <%= task.body %>
-        
-        <% end %>
+    <h2>Все задания</h2>
+    <% @profile.tasks.each do |task| %>
+        <ul>
+          <li> <%= link_to task.body, task_path(task) %></li>
+          <li><%= link_to 'Destroy', task, method: :delete, data: {confirm: 'Are you sure?'} %></li>
+        </ul>
+
     <% end %>
+
+    <%= link_to 'Создать задание', new_user_task_path(@profile) %>
+<% else %>
+    <h2>Задания которые Вы выполняете</h2>
+    <table>
+      <tr>
+        <% @profile.assigned_tasks.each do |task| %>
+            <td> <%= task.title %></td>
+            <td> <%= task.body %></td>
+            <td> <%= task.cost %></td>
+            <td> <%= task.location %></td>
+            <li><%= link_to 'Отписаться',delete_user_assigned_task_users_path(task.id), method: :delete, data: {confirm: 'Are you sure?'} %></li>
+
+        <% end %>
+<% end %>
+
+</table>
+
 <p>
   <%= link_to 'Редактирование инфорамации о себе', edit_user_path(current_user) %>
 </p>

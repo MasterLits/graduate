@@ -1,0 +1,11 @@
+<% task = task_notification.task%>
+<% user = task_notification.assigned_user%>
+
+<tr>
+  <td>
+    <%= link_to task.title, task_notification_path(task_notification.id, redirect_url: task_path(task.id)) %>
+  </td>
+  <td>
+    <%= link_to user.email, task_notification_path(task_notification.id, redirect_url: user_path(user.id)) %>
+  </td>
+</tr>

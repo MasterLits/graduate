@@ -1,37 +1,40 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Categories</h1>
-
+<%= form_tag(tasks_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Поиск работы" %>
+    <%= submit_tag "Найти" %>
+<% end %>
 <table>
   <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
+  <tr>
+    <th colspan="3"></th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @categories.each do |category| %>
+  <% @categories.each do |category| %>
       <tr>
         <td><%= category.body %></td>
-            <% if current_user == nil%>  
-              <td><%= link_to 'Show', category %></td>
-            <% elsif current_user.role == "работник" || "работодатель"%>
-              <td><%= link_to 'Show', category %></td>
-            <%else%>                             
-              <td><%= link_to 'Show', category %></td>
-              <td><%= link_to 'Edit', edit_category_path(category) %></td>
-              <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>   
-            
-            <% end %>
+        <% if current_user == nil %>
+            <td><%= link_to 'Show', category %></td>
+        <% elsif current_user.role == "работник" || "работодатель" %>
+            <td><%= link_to 'Show', category %></td>
+        <% else %>
+            <td><%= link_to 'Show', category %></td>
+            <td><%= link_to 'Edit', edit_category_path(category) %></td>
+            <td><%= link_to 'Destroy', category, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+
+        <% end %>
       </tr>
 
-    <% end %>
+  <% end %>
   </tbody>
 </table>
 
 <br>
-<% if current_user == nil || current_user.role != "admin"%>
-  <td> </td>
+<% if current_user == nil || current_user.role != "admin" %>
+    <td></td>
 <% else %>
-  <%= link_to 'New Category', new_category_path %>
+    <%= link_to 'New Category', new_category_path %>
 <% end %>

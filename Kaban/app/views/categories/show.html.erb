@@ -7,7 +7,7 @@
   <thead>
   <tr>
     <td>Работодатель</td>
-    <td>Описание</td>
+    <td>Название</td>
     <td>Цена</td>
     <td>Адрес</td>
   </tr>
@@ -22,14 +22,14 @@
     <% else %>  
       <td><%= link_to task.user.email, profile_path %> </td>
     <% end %>
-    <td><%=task.body %></td>
+        <td><%=link_to task.title, task_path(task) %></td>
+
     <td><%=task.cost %></td>
     <td><%=task.location %></td>  
       <% if current_user == nil%> 
         <td> Вы не авторизированы</td>     
       <% elsif current_user.role == "работник" ||  current_user.role == "admin"%>
-        <td><%= link_to 'Присвоить', assign_task_users_path(task_id: task.id), method: :post %></td>        
-      <% end%>
+        <% end%>
         </td>
     </tr>
 <%end%>
@@ -37,8 +37,8 @@
 </table>
 
 <% if current_user == nil || current_user.role == "работодатель" || current_user.role == "работник"%> 
-      <%= link_to 'Back', categories_path %>
+      <%= link_to 'На главную', categories_path %>
     <%elsif current_user.role == "admin"%>
-      <%= link_to 'Back', categories_path %>
-      <%= link_to 'Edit', edit_category_path(@category) %>
+      <%= link_to 'На главную', categories_path %>
+      <%= link_to 'Редактировать', edit_category_path(@category) %>
     <% end %>
