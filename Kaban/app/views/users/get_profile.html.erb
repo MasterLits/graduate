@@ -59,7 +59,9 @@
     <% @profile.tasks.each do |task| %>
         <ul>
           <li> <%= link_to task.body, task_path(task) %></li>
+          <li><%= link_to 'Destroy', task, method: :delete, data: {confirm: 'Are you sure?'} %></li>
         </ul>
+
     <% end %>
 
     <%= link_to 'Создать задание', new_user_task_path(@profile) %>
@@ -71,7 +73,9 @@
             <td> <%= task.title %></td>
             <td> <%= task.body %></td>
             <td> <%= task.cost %></td>
-            <td> <%= task.location %></td></tr>
+            <td> <%= task.location %></td>
+            <li><%= link_to 'Отписаться',delete_user_assigned_task_users_path(task.id), method: :delete, data: {confirm: 'Are you sure?'} %></li>
+
         <% end %>
 <% end %>
 

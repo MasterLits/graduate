@@ -3,7 +3,7 @@
 <h1>Categories</h1>
 <%= form_tag(tasks_path, :method => "get", id: "search-form") do %>
     <%= text_field_tag :search, params[:search], placeholder: "Поиск работы" %>
-    <%= submit_tag "Search" %>
+    <%= submit_tag "Найти" %>
 <% end %>
 <table>
   <thead>

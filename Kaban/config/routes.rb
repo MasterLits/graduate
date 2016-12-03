@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :tasks
     post :assign_task, on: :collection
     get :assigned_tasks, on: :collection
+    delete :delete_user_assigned_task, on: :collection
   end
 
   resources :comments

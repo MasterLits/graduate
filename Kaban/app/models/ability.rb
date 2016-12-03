@@ -22,7 +22,9 @@ class Ability
       can :read, User
       can :read, Task
 
-      can [:assign_task,:assigned_tasks ], User
+
+      can [:assign_task,:assigned_tasks,:delete_user_assigned_task ], User
+
     else
       can :read, Task
       can :read,   Category

@@ -29,4 +29,5 @@ class User < ApplicationRecord
     assigned_users_tasks.create(task: task)
     TaskNotification.create(task: task, assigned_user_id: id, creator_id: task.user_id)
   end
+
 end

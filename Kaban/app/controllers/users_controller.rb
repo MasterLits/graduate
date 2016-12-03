@@ -15,13 +15,21 @@ class UsersController < ApplicationController
   end
 
   def edit_profile
+
   end
+
+  def delete_user_assigned_task
+    task=current_user.assigned_users_tasks.find_by(task_id: params[:format])
+    task.destroy
+    redirect_to profile_path
+  end
+
 
   def get_profile
     @profile=current_user
-
     @task_notifications = current_user.task_notifications
   end
+
 
 
   # GET /users/new
@@ -57,6 +65,9 @@ class UsersController < ApplicationController
   def assigned_tasks
     @asstasks = current_user.assigned_tasks
   end
+
+
+
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
