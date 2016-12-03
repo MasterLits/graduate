@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :task_users
   resources :task_categories
   resources :admins
-  resources :statuses
+  resources :statuses, only: [:show,:create, :new]
   resources :reviews
   resources :categories do
     resource :tasks
@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   match "profile" => "users#get_profile", :as => 'profile', via: "get"
 
   resources :users do
+    resources :comments,  only: [:show,:create, :new, :edit]
     resources :tasks
     post :assign_task, on: :collection
     get :assigned_tasks, on: :collection
