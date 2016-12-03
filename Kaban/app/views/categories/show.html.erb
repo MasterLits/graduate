@@ -19,19 +19,20 @@
   <tr>
 <% @category.tasks.each do |task| %>    
      <td><%= image_tag task.user.photo, :size => "50x50" %></td>
-    <% if current_user == nil %>
-      <td><%= "#{task.user.first_name} #{task.user.last_name}" %> </td>
-    <% else %>  
+    <% if current_user == task.user%>  
+      <td><%= link_to "#{task.user.first_name} #{task.user.last_name}", profile_path %> </td>
+    <% else %>
      <td><%= link_to "#{task.user.first_name} #{task.user.last_name}", user_path(task.user) %> </td>
     <% end %>
-        <td><%=link_to task.title, task_path(task) %></td>       
+    <td><%=link_to task.title, task_path(task) %></td>       
 
     <td><%=task.cost %></td>
     <td><%=task.location %></td>  
       <% if current_user == nil%> 
         <td> Вы не авторизированы</td>     
-      <% elsif current_user.role == "работник" ||  current_user.role == "admin"%>
-        <% end%>
+      <% else %>
+        <% current_user.role == "работник" ||  current_user.role == "admin" %>
+      <% end%>
         </td>
     </tr>
 <%end%>
@@ -40,7 +41,7 @@
 
 <% if current_user == nil || current_user.role == "работодатель" || current_user.role == "работник"%> 
       <%= link_to 'На главную', categories_path %>
-    <%elsif current_user.role == "admin"%>
+<%else %> 
       <%= link_to 'На главную', categories_path %>
       <%= link_to 'Редактировать', edit_category_path(@category) %>
-    <% end %>
+<% end %>

@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Categories</h1>
+<h1>КАТЕГОРИИ РАБОТ</h1>
 <%= form_tag(tasks_path, :method => "get", id: "search-form") do %>
     <%= text_field_tag :search, params[:search], placeholder: "Поиск работы" %>
     <%= submit_tag "Найти" %>
@@ -17,7 +17,7 @@
       <tr>
         <td><%= category.body %></td>
         <% if current_user == nil %>
-            <td><%= link_to 'Поиск', category %></td>
+            <td><%= link_to 'Просмотреть', category %></td>
         <% elsif current_user.role == "работник" || "работодатель" %>
             <td><%= link_to 'Просмотреть', category %></td>
         <% else %>

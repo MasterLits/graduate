@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>First name:</strong>
+  <strong>Имя:</strong>
   <%= @user.first_name %>
 </p>
 
 <p>
-  <strong>Last name:</strong>
+  <strong>Фамилия:</strong>
   <%= @user.last_name %>
 </p>
 
@@ -19,19 +19,19 @@
 
 
 <p>
-  <strong>Photo:</strong>
+  <strong>Фото:</strong>
   <%=image_tag @user.photo, :size=>"100x100" %>
 </p>
 
 <p>
-  <strong>Tel:</strong>
+  <strong>Номер телефона:</strong>
   <%= @user.tel %>
 </p>
 
 
 
 <p>
-  <strong>Inn:</strong>
+  <strong>Идентификационный номер:</strong>
   <%= @user.inn %>
 </p>
 
@@ -42,16 +42,16 @@
 </p>
 
 <p>
-  <strong>Passport:</strong>
+  <strong>Паспорт:</strong>
   <%= @user.passport %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong>Описание:</strong>
   <%= @user.description %>
 </p>
 
-  <%if current_user==@user%>
+  <%if current_user == @user%>
     <%= link_to 'Редактировать', edit_user_path(@user) %>
   <%end%>
 

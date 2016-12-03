@@ -5,7 +5,11 @@
 </p>
 <p>
   <strong>Работодатель:</strong>
-  <%=link_to "#{@task.user.first_name} #{@task.user.last_name}", user_path(@task.user) %>
+  <% if current_user == @task.user %>
+    <%=link_to "#{@task.user.first_name} #{@task.user.last_name}", profile_path %>
+  <% else %>  
+    <%=link_to "#{@task.user.first_name} #{@task.user.last_name}", user_path(@task.user) %>
+  <% end %>
 </p>
 
 
