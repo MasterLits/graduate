@@ -17,9 +17,9 @@
       <tr>
         <td><%= category.body %></td>
         <% if current_user == nil %>
-            <td><%= link_to 'Show', category %></td>
+            <td><%= link_to 'Поиск', category %></td>
         <% elsif current_user.role == "работник" || "работодатель" %>
-            <td><%= link_to 'Show', category %></td>
+            <td><%= link_to 'Просмотреть', category %></td>
         <% else %>
             <td><%= link_to 'Show', category %></td>
             <td><%= link_to 'Edit', edit_category_path(category) %></td>

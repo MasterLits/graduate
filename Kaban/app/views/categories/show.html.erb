@@ -6,6 +6,7 @@
 <table>
   <thead>
   <tr>
+    <td>Фото</td>
     <td>Работодатель</td>
     <td>Название</td>
     <td>Цена</td>
@@ -16,13 +17,14 @@
   <tbody>
 
   <tr>
-<% @category.tasks.each do |task| %>
-    <% if current_user == nil || current_user.id != task.user_id %>      
-      <td><%= link_to task.user.email, task.user %></td>
+<% @category.tasks.each do |task| %>    
+     <td><%= image_tag task.user.photo, :size => "50x50" %></td>
+    <% if current_user == nil %>
+      <td><%= "#{task.user.first_name} #{task.user.last_name}" %> </td>
     <% else %>  
-      <td><%= link_to task.user.email, profile_path %> </td>
+     <td><%= link_to "#{task.user.first_name} #{task.user.last_name}", user_path(task.user) %> </td>
     <% end %>
-        <td><%=link_to task.title, task_path(task) %></td>
+        <td><%=link_to task.title, task_path(task) %></td>       
 
     <td><%=task.cost %></td>
     <td><%=task.location %></td>  
