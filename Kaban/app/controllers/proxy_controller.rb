@@ -10,3 +10,4 @@ class ProxyController < ApplicationController
 
     render :text => response.body
   end
+  end
