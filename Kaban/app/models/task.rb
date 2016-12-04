@@ -6,7 +6,7 @@ class Task < ApplicationRecord
   belongs_to :user
   belongs_to :category
   belongs_to :status
-  validates :body, :cost, :location, :title,  presence: true
+  validates :body, :cost, :location, :title, :category, :status, presence: true
 
 
     def self.search(search)
