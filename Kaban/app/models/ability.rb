@@ -14,6 +14,7 @@ class Ability
         task.user_id==user.id
       end
       can :read, Category
+
     elsif user.role == "работник"
       can [:edit,:update, :edit_profile, :get_profile], User do |user_some|
         user_some.id==user.id
@@ -22,12 +23,11 @@ class Ability
       can :read, User
       can :read, Task
 
-
-      can [:assign_task,:assigned_tasks,:delete_user_assigned_task ], User
-
-    else
-      can :read, Task
-      can :read,   Category
+      can [:assigned_tasks,:delete_user_assigned_task ], User
+      can :assign_task, User
     end
+  else
+    can :read, Task
+    can :read,  Category
   end
 end

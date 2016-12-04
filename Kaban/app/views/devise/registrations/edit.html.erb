@@ -14,7 +14,8 @@
 
 
   <div class="field">
-    <%= f.label :password, "Пароль" %> <i>(Оставте пустым, если вы не хотите изменить пароль)</i><br />
+    <strong> Изменение пароля</strong>
+    <%= f.label :password, "Пароль" %> <i>(Оставьте пустым, если вы не хотите изменить пароль)</i><br />
     <%= f.password_field :password, autocomplete: "off" %>
     <% if @minimum_password_length %>
       <br />
@@ -27,6 +28,7 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+  <strong> Изменение роли пользователя (работодатель/работник)</strong>
   <div class="field">
     <%= f.label :current_password, "Текущий пароль" %> <i>(Нам нужен ваш текущий пароль для подтверждения изменений )</i><br />
     <%= f.password_field :current_password, autocomplete: "off" %>

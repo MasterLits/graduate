@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161202170218) do
+ActiveRecord::Schema.define(version: 20161204004125) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "login"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20161202170218) do
     t.text     "body",       limit: 65535
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.integer  "creator_id"
     t.index ["task_id"], name: "index_comments_on_task_id", using: :btree
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
@@ -65,11 +66,9 @@ ActiveRecord::Schema.define(version: 20161202170218) do
   end
 
   create_table "statuses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "task_id"
     t.string   "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["task_id"], name: "index_statuses_on_task_id", using: :btree
   end
 
   create_table "task_notifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -84,6 +83,7 @@ ActiveRecord::Schema.define(version: 20161202170218) do
 
   create_table "tasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "category_id"
+    t.integer  "status_id"
     t.text     "body",        limit: 65535
     t.integer  "cost"
     t.time     "date"
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 20161202170218) do
     t.datetime "updated_at",                null: false
     t.string   "title"
     t.index ["category_id"], name: "index_tasks_on_category_id", using: :btree
+    t.index ["status_id"], name: "index_tasks_on_status_id", using: :btree
     t.index ["user_id"], name: "index_tasks_on_user_id", using: :btree
   end
 

@@ -3,9 +3,6 @@ class StatusesController < ApplicationController
 
   # GET /statuses
   # GET /statuses.json
-  def index
-    @statuses = Status.all
-  end
 
   # GET /statuses/1
   # GET /statuses/1.json

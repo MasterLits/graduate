@@ -2,8 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "registrations" }
   resources :task_users
   resources :task_categories
-  resources :admins
-  resources :statuses
+  resources :statuses, only: [:show,:create, :new]
   resources :reviews
   resources :categories do
     resource :tasks
@@ -17,14 +16,14 @@ Rails.application.routes.draw do
   match "profile" => "users#get_profile", :as => 'profile', via: "get"
 
   resources :users do
+    resources :comments
     resources :tasks
     post :assign_task, on: :collection
     get :assigned_tasks, on: :collection
     delete :delete_user_assigned_task, on: :collection
   end
 
-  resources :comments
-  resources :messages
+
   root 'categories#index'
 
   resources :task_notifications, only: %i{index show}

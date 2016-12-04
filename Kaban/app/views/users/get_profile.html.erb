@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+   <%= image_tag @profile.photo, :size => "100x100" %>
+</p>
+
+<p>
   <strong>Имя:</strong>
   <%= @profile.first_name %>
 </p>
@@ -15,13 +19,6 @@
   <%= @profile.email %>
 </p>
 
-
-
-
-<p>
-  <strong>Фото:</strong>
-  <%= image_tag @profile.photo, :size => "100x100" %>
-</p>
 
 <p>
   <strong>Телефон:</strong>
@@ -40,12 +37,12 @@
   <strong>Роль:</strong>
 
   <%= @profile.role %>
-
+  <p><i>(В зависимости от выбранной роли вы сможете браться за задания или поручать их)</i></p>
 
 </p>
 
 <p>
-  <strong>Номер и серия пасспорта:</strong>
+  <strong>Номер и серия паспорта:</strong>
   <%= @profile.passport %>
 
 </p>
@@ -59,24 +56,32 @@
     <% @profile.tasks.each do |task| %>
         <ul>
           <li> <%= link_to task.body, task_path(task) %></li>
-          <li><%= link_to 'Destroy', task, method: :delete, data: {confirm: 'Are you sure?'} %></li>
+          <%= link_to 'Удалить задание', task, method: :delete, data: {confirm: 'Вы уверены, что хотите удалить задание?'} %>
         </ul>
 
     <% end %>
 
-    <%= link_to 'Создать задание', new_user_task_path(@profile) %>
+    <li><%= link_to 'Создать задание', new_user_task_path(@profile) %></li>
 <% else %>
     <h2>Задания которые Вы выполняете</h2>
     <table>
+      <thead>
+        <tr>
+          <td>Задание</td>
+          <td>Цена</td>
+          <td>Адрес</td>
+        </tr>
+      </thead>
+      <tbody>
       <tr>
         <% @profile.assigned_tasks.each do |task| %>
-            <td> <%= task.title %></td>
-            <td> <%= task.body %></td>
+            <td> <%= link_to "#{task.title} (подробнее)", task_path(task) %></td>
             <td> <%= task.cost %></td>
             <td> <%= task.location %></td>
-            <li><%= link_to 'Отписаться',delete_user_assigned_task_users_path(task.id), method: :delete, data: {confirm: 'Are you sure?'} %></li>
+            <td><li><%= link_to 'Отписаться',delete_user_assigned_task_users_path(task.id), method: :delete, data: {confirm: 'Вы уверены, что хотите отписаться?'} %></li></td>
 
         <% end %>
+      </tbody>
 <% end %>
 
 </table>
