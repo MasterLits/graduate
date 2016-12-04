@@ -46,7 +46,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">MYA&MM - Move You Ass & Make Money</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -142,21 +142,25 @@
   <h3 style="text-align: center">Не нашли нужную услугу? Используйте поиск!</h3>
   <div class="col-md-2"></div>
   <div class="col-md-8">
-    <div class="input-group">
-      <input type="text" class="form-control" placeholder="Search for...">
-      <span class="input-group-btn">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Район<span class="caret"></span></button>
-        <ul class="dropdown-menu dropdown-menu-right">
-          <li><a href="#">Центр</a></li>
-          <li><a href="#">Черемушки</a></li>
-          <li><a href="#">Слабодка</a></li>
-          <li><a href="#">Таирова</a></li>
-          <li><a href="#">Котовского</a></li>
-          <li><a href="#">Фонтан</a></li>
-        </ul>
-        <button class="btn btn-default" type="button">Go!</button>
-      </span>
-    </div>
+    <!--<div class="input-group">-->
+      <%= form_tag(tasks_path, :method => "get", id: "search-form") do %>
+          <%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
+          <%= submit_tag "Search" %>
+      <% end %>
+      <!--<input type="text" class="form-control" placeholder="Search for...">-->
+      <!--<span class="input-group-btn">-->
+        <!--<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Район<span class="caret"></span></button>-->
+        <!--<ul class="dropdown-menu dropdown-menu-right">-->
+          <!--<li><a href="#">Центр</a></li>-->
+          <!--<li><a href="#">Черемушки</a></li>-->
+          <!--<li><a href="#">Слабодка</a></li>-->
+          <!--<li><a href="#">Таирова</a></li>-->
+          <!--<li><a href="#">Котовского</a></li>-->
+          <!--<li><a href="#">Фонтан</a></li>-->
+        <!--</ul>-->
+        <!--<button class="btn btn-default" type="button">Go!</button>-->
+      <!--</span>-->
+    <!--</div>-->
   </div>
 </div>
 <div class="container marketing">
@@ -220,7 +224,6 @@
   <!--==========================-->
 
 
-  <p id="notice"><%= notice %></p>
 
   <h1>Categories</h1>
 
@@ -323,8 +326,8 @@
 </html>
 <h1>Categories</h1>
 <%= form_tag(tasks_path, :method => "get", id: "search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
-    <%= submit_tag "Search" %>
+    <!--<%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>-->
+    <!--<%= submit_tag "Search" %>-->
 <% end %>
 <table>
   <thead>

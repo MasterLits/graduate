@@ -23,7 +23,10 @@ $emerald-color:   #88d8b0;
 //  }
 //}
 .navbar-inverse{
-  background-color: $sky-color;
+  .navbar-brand {
+    background-color: $sky-color;
+    color: $lime-color;
+  }
 }
 
 img.img-circle{
