@@ -10,10 +10,15 @@
     </div>
   <% end %>
 
+
     <div class="field">
       <%= f.label :category_id_id, "Выберите категорию" %>
         <%=f.select :category_id, ['Выбeрите категорию']+Category.all.collect{|s| [s.body, s.id]}%>
       </div>
+    <div class="field">
+      <%= f.label :status_id, "Выберите cтатус выполнения задания" %>
+      <%=f.select :status_id, ['Выбирите статус']+Status.all.collect{|s| [s.body, s.id]}%>
+    </div>
     <div class="field">
       <%= f.label :title, "Заголовок" %>
       <%= f.text_field :title %>

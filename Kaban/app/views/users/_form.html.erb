@@ -13,6 +13,13 @@
 
 
   <div class="field">
+    <%= f.label :Фото %>
+    <% if controller.action_name = 'edit' %> 
+        <%= f.file_field :photo%>
+    <% end %>
+  </div>
+
+  <div class="field">
     <%= f.label :Имя %>
     <%= f.text_field :first_name %>
   </div>
@@ -20,13 +27,6 @@
   <div class="field">
     <%= f.label :Фамилия %>
     <%= f.text_field :last_name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :Фото %>
-    <% if controller.action_name = 'edit' %> 
-        <%= f.file_field :photo%>
-    <% end %>
   </div>
 
   <div class="field">
@@ -42,7 +42,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :Серия_пасспорта %>
+    <%= f.label :Серия_паспорта %>
     <%= f.text_field :passport %>
   </div>
     <div class="field">
@@ -55,6 +55,6 @@
   </div> 
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Обновить"%>
   </div>
 <% end %>

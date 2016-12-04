@@ -3,9 +3,7 @@ class CommentsController < ApplicationController
 
   # GET /comments
   # GET /comments.json
-  def index
-    @comments = Comment.all
-  end
+
 
   # GET /comments/1
   # GET /comments/1.json
@@ -14,7 +12,8 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    @comment = Comment.new
+    @user=current_user
+    @comment = @user.comments.build(comment_params)
   end
 
   # GET /comments/1/edit
@@ -24,11 +23,12 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @comment = Comment.new(comment_params)
+    @user=current_user
+    @comment = @user.comments.build(comment_params)
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+        format.html { redirect_to :back, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }
@@ -69,6 +69,6 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:body)
+      params.require(:comment).permit(:body, :user_id)
     end
 end

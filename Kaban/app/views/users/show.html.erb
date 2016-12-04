@@ -1,27 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Имя:</strong>
-  <%= @user.first_name %>
+  <%=image_tag @user.photo, :size=>"100x100" %>
 </p>
 
 <p>
-  <strong>Фамилия:</strong>
-  <%= @user.last_name %>
-</p>
+  <strong>Имя:</strong>
+  <%= @user.first_name + ' ' +@user.last_name  %>
 
 <p>
   <strong>Email:</strong>
   <%= @user.email %>
 </p>
 
-
-
-
-<p>
-  <strong>Фото:</strong>
-  <%=image_tag @user.photo, :size=>"100x100" %>
-</p>
 
 <p>
   <strong>Номер телефона:</strong>
@@ -56,5 +47,19 @@
   <%end%>
 
     <%= link_to 'На главную', categories_path%>
+
+
+<h2>Отзывы о пользователе</h2>
+<% @user.comments.each do |comment| %>
+    <ul>
+      <li><%= comment.body %></li>
+    </ul>
+<% end %>
+
+
+<%= form_for [@user, @user.comments.build] do |f| %>
+    <%= f.text_field :body%>
+    <%= f.submit "Leave comment" %>
+<% end %>
 
 

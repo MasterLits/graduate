@@ -30,12 +30,12 @@
 </p>
 
 <p>
-  <strong>Дата:</strong>
-  <%= @task.date %>
+  <strong>Дата создания:</strong>
+  <%= @task.created_at.localtime.strftime("%d %b. %Y %H:%M") %>
 </p>
 
 <p>
-  <strong>Место:</strong>
+  <strong>Адрес:</strong>
   <%= @task.location %>
 </p>
 
@@ -50,11 +50,12 @@
     <li> <%= link_to 'Назад', category_path(@task.category.id) %></li>
 <% elsif current_user.role == "работник" ||  current_user.role == "admin" %>
     <% if current_user.email != @task.user.email %>
-      <td><%= link_to 'Взять на выполнение', assign_task_users_path(task_id: @task.id), method: :post %></td>
+      <td><%= link_to 'Предложить свои услуги', assign_task_users_path(task_id: @task.id), method: :post %></td>
     <% end %>
     <li> <%= link_to 'Назад', category_path(@task.category.id) %></li>
 <% elsif  current_user.role == "работодатель"%>
-    <td> <%= link_to 'Назад', category_path(@task.category.id) %></td>
+    <li> <%= link_to 'Редактировать задание или его статус', edit_task_path %></li>
+    <li> <%= link_to 'Назад', category_path(@task.category.id) %></li>
 <% end %>
 
 
