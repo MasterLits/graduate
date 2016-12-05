@@ -184,7 +184,7 @@ DEPENDENCIES
   carrierwave (>= 1.0.0.rc, < 2.0)
   coffee-rails (~> 4.2)
   devise
-  faker
+  faker (~> 1.6, >= 1.6.6)
   faraday
   jbuilder (~> 2.5)
   jquery-rails
