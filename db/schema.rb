@@ -12,17 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20161204004125) do
 
-  create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "login"
-    t.string   "password"
-    t.string   "role"
-    t.string   "photo"
-    t.string   "tel"
-    t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "assigned_users_tasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "task_id"
     t.integer  "user_id"
