@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers: { registrations: "registrations" }
   resources :task_users
+  resources :statuses
   resources :task_categories
   resources :statuses, only: [:show,:create, :new]
   resources :reviews
