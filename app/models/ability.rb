@@ -25,9 +25,10 @@ class Ability
 
       can [:assigned_tasks,:delete_user_assigned_task ], User
       can :assign_task, User
-    end
+
   else
     can :read, Task
     can :read,  Category
   end
-end
+  end
+  end
