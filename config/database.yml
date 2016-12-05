@@ -8,6 +8,7 @@ default: &default
   password: root
 
 
+
 development:
   <<: *default
   database: lits
