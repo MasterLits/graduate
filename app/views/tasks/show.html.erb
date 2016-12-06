@@ -3,6 +3,12 @@
   <strong>Категория:</strong>
   <%= @task.category.body %>
 </p>
+
+<p>
+  <strong>Статус выполнения задания:</strong>
+  <%= @task.status.body %>
+</p>
+
 <p>
   <strong>Работодатель:</strong>
   <% if current_user == @task.user %>
@@ -11,8 +17,6 @@
     <%=link_to "#{@task.user.first_name} #{@task.user.last_name}", user_path(@task.user) %>
   <% end %>
 </p>
-
-
 
 <p>
   <strong>Заголовок:</strong>
@@ -41,7 +45,11 @@
 
   <strong>Пользователи которые хотят выполнить данное задание:</strong>
   <% @task.assigned_users_tasks.each do |task| %>
-      <%=link_to task.user.email, user_path(task.user)%>
+      <% if current_user == task.user %>
+        <%=link_to "#{task.user.first_name} #{task.user.last_name}", profile_path%>
+      <% else %>
+        <%=link_to "#{task.user.first_name} #{task.user.last_name}", user_path(task.user)%>
+      <% end %>  
   <%end%>
 </p>
 
