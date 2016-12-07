@@ -1,0 +1,95 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+   <%= image_tag @profile.photo, :size => "100x100" %>
+</p>
+
+<p>
+  <strong>Имя:</strong>
+  <%= @profile.first_name %>
+</p>
+
+<p>
+  <strong>Фамилия:</strong>
+  <%= @profile.last_name %>
+</p>
+
+<p>
+  <strong>E-mail:</strong>
+  <%= @profile.email %>
+</p>
+
+
+<p>
+  <strong>Телефон:</strong>
+  <%= @profile.tel %>
+</p>
+
+
+
+<p>
+  <strong>Идентификационный номер:</strong>
+  <%= @profile.inn %>
+</p>
+
+<p>
+
+  <strong>Роль:</strong>
+
+  <%= @profile.role %>
+  <p><i>(В зависимости от выбранной роли вы сможете браться за задания или поручать их)</i></p>
+
+</p>
+
+<p>
+  <strong>Номер и серия паспорта:</strong>
+  <%= @profile.passport %>
+
+</p>
+
+<p>
+  <strong>О себе:</strong>
+  <%= @profile.description %>
+</p>
+<% if @profile.role=="работодатель" %>
+    <h2>Все задания</h2>
+    <% @profile.tasks.each do |task| %>
+        <ul>
+          <li> <%= link_to task.body, task_path(task) %></li>
+          <%= link_to 'Удалить задание', task, method: :delete, data: {confirm: 'Вы уверены, что хотите удалить задание?'} %>
+        </ul>
+
+    <% end %>
+
+    <li><%= link_to 'Создать задание', new_user_task_path(@profile) %></li>
+<% else %>
+    <h2>Задания которые Вы выполняете</h2>
+    <table>
+      <thead>
+        <tr>
+          <td>Задание</td>
+          <td>Цена</td>
+          <td>Адрес</td>
+        </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <% @profile.assigned_tasks.each do |task| %>
+            <td> <%= link_to "#{task.title} (подробнее)", task_path(task) %></td>
+            <td> <%= task.cost %></td>
+            <td> <%= task.location %></td>
+            <td><li><%= link_to 'Отписаться',delete_user_assigned_task_users_path(task.id), method: :delete, data: {confirm: 'Вы уверены, что хотите отписаться?'} %></li></td>
+
+        <% end %>
+      </tbody>
+<% end %>
+
+</table>
+
+<p>
+  <%= link_to 'Редактирование инфорамации о себе', edit_user_path(current_user) %>
+</p>
+
+<p>
+  <%= link_to 'Редактирование Профиля', edit_user_registration_path(current_user) %>
+</p>

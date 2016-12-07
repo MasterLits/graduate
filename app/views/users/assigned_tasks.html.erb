@@ -1,0 +1,13 @@
+<tbody>
+  <% current_user.assigned_tasks.each do |task| %>
+    <tbody>
+    <tr>
+      <td><%=  task.body %></td>
+      <td> <%= task.date %></td>
+      <td><%=  link_to 'Show', task %></td>
+      <td><%=  link_to 'Edit', task %></td>
+<% end %>
+    </tr>
+
+</tbody>
+</table>

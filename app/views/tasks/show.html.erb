@@ -1,0 +1,66 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Категория:</strong>
+  <%= @task.category.body %>
+</p>
+<p>
+  <strong>Работодатель:</strong>
+  <% if current_user == @task.user %>
+    <%=link_to "#{@task.user.first_name} #{@task.user.last_name}", profile_path %>
+  <% else %>  
+    <%=link_to "#{@task.user.first_name} #{@task.user.last_name}", user_path(@task.user) %>
+  <% end %>
+</p>
+
+
+
+<p>
+  <strong>Заголовок:</strong>
+  <%= @task.title %>
+</p>
+
+<p>
+  <strong>Описание:</strong>
+  <%= @task.body %>
+</p>
+
+<p>
+  <strong>Цена:</strong>
+  <%= @task.cost %>
+</p>
+
+<p>
+  <strong>Дата создания:</strong>
+  <%= @task.created_at.localtime.strftime("%d %b. %Y %H:%M") %>
+</p>
+
+<p>
+  <strong>Адрес:</strong>
+  <%= @task.location %>
+</p>
+
+  <strong>Пользователи которые хотят выполнить данное задание:</strong>
+  <% @task.assigned_users_tasks.each do |task| %>
+      <%=link_to task.user.email, user_path(task.user)%>
+  <%end%>
+</p>
+
+<% if current_user == nil%>
+    <td> Вы не авторизированы для выполнения каких либо действий с заданиями, войдите или зарегистрируйтесь</td>
+    <li> <%= link_to 'Назад', category_path(@task.category.id) %></li>
+<% elsif current_user.role == "работник" ||  current_user.role == "admin" %>
+    <% if current_user.email != @task.user.email %>
+      <td><%= link_to 'Предложить свои услуги', assign_task_users_path(task_id: @task.id), method: :post %></td>
+    <% end %>
+    <li> <%= link_to 'Назад', category_path(@task.category.id) %></li>
+<% elsif  current_user.role == "работодатель"%>
+    <li> <%= link_to 'Редактировать задание или его статус', edit_task_path %></li>
+    <li> <%= link_to 'Назад', category_path(@task.category.id) %></li>
+<% end %>
+
+
+</td>
+</tr>
+
+
+

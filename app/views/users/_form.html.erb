@@ -1,0 +1,60 @@
+<%= form_for(user) do |f| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= f.label :Фото %>
+    <% if controller.action_name = 'edit' %> 
+        <%= f.file_field :photo%>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Имя %>
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Фамилия %>
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Номер_телефона %>
+    <%= f.text_field :tel %>
+  </div>
+
+
+
+  <div class="field">
+    <%= f.label :Идентификационный_номер %>
+    <%= f.number_field :inn %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Серия_паспорта %>
+    <%= f.text_field :passport %>
+  </div>
+    <div class="field">
+
+    </div>
+
+  <div class="field">
+    <%= f.label :Описание %>
+    <%= f.text_field :description %>
+  </div> 
+
+  <div class="actions">
+    <%= f.submit "Обновить"%>
+  </div>
+<% end %>
