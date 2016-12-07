@@ -11,11 +11,7 @@ class User < ApplicationRecord
   has_many :tasks
   has_many :task_notifications, foreign_key: :creator_id
 
-  validates :first_name, :last_name, :tel, :passport, presence: true
-  validates :first_name, :last_name, length: { minimum: 2}
-  validates :inn, presence: true, length: { minimum: 12}
-  validates  :passport, presence: true, length: { minimum: 8, maximum: 10}
-  validates :role,  presence: true
+
 
   mount_uploader :photo, PhotoUploader
 
