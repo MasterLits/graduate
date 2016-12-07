@@ -8,8 +8,9 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.integer :inn
       t.string :passport
       t.text :description
-
-
+      t.string   :confirmation_token
+      t.datetime :confirmed_at
+      t.datetime :confirmation_sent_at
       t.timestamps
     end
   end

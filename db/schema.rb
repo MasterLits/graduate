@@ -105,6 +105,9 @@ ActiveRecord::Schema.define(version: 20161204004125) do
     t.string   "inn"
     t.string   "passport"
     t.text     "description",            limit: 65535
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
     t.string   "email",                                default: "", null: false
