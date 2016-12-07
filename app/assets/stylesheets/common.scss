@@ -1,0 +1,53 @@
+body {
+  margin: 60px 0 0;
+}
+
+.navbar__stretch {
+  background-color: transparent !important;
+}
+
+.navbar-header__profile-link {
+  height: 60px;
+  line-height: 60px;
+  padding-top: 10px !important;
+  padding-bottom: 0 !important;
+  white-space: nowrap;
+}
+
+.navbar-header__avatar {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin-right: 5px;
+  border-radius: 20px;
+  vertical-align: middle;
+  background-color: white;
+}
+
+.navbar-header__avatar-blank {
+  background: white url("../images/avatar_blank.png") center top no-repeat;
+}
+
+.navbar-header__user-name {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.navbar-brand {
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+
+  img {
+    height: 50px !important;
+  }
+}
+
+.home {
+  height: 100vmin;
+  margin-top: -60px;
+  background-attachment: scroll;
+}
+
+.hero-txt {
+  margin-top: 70px;
+}

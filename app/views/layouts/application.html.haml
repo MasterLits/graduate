@@ -1,0 +1,34 @@
+!!! 5
+%html
+  %head
+    %title Двое из ларца
+    = csrf_meta_tags
+
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+  %body
+    %header.st-navbar.st-navbar-mini
+      %nav.navbar.navbar-default.navbar-fixed-top.clearfix{role: "navigation"}
+        .container
+          .navbar-header
+            = link_to categories_path, class: "navbar-brand" do
+              = image_tag "logo.jpg", alt: "Двое из ларца", class: "img-responsive"
+
+          - if user_signed_in?
+            .navbar-default.navbar__stretch
+              %ul.nav.navbar-nav.navbar-right
+                %li
+                  = link_to profile_path, class: "navbar-header__profile-link" do
+                    - if current_user[:photo].nil?
+                      %span.navbar-header__avatar.navbar-header__avatar-blank
+                    - else
+                      = image_tag current_user.photo, class: "navbar-header__avatar"
+                    %span.navbar-header__user-name= current_user.first_name + " " + current_user.last_name
+                %li= link_to "Выйти", destroy_user_session_path, method: :delete
+
+    = yield
+
+    %p
+      - if user_signed_in?
+        = render partial: 'task_notifications/notifications_nav'
