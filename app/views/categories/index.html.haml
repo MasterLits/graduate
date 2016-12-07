@@ -1,0 +1,48 @@
+%section.home{id: "home", "data-stellar-background-ratio": "0.4"}
+  .container
+    .row
+      .col-md-12
+        .st-home-unit
+          .hero-txt
+            %h2.hero-title Онлайн сервисзаказа и выполнения работ
+            - if !user_signed_in?
+              = link_to "Войти", new_user_session_path, class: "btn btn-main btn-lg"
+  .mouse-icon
+    .wheel
+
+%p.bg-info{id: "notice"}= notice
+
+= form_tag(tasks_path, :method => "get", id: "search-form") do
+  = text_field_tag :search, params[:search], placeholder: "Поиск работы"
+  = submit_tag "Найти"
+
+%h1 КАТЕГОРИИ РАБОТ
+
+%table
+  %thead
+    %tr
+      %th{colspan: "3"}
+
+  %tbody
+    = @categories.each do |category|
+      %tr
+        %td= category.body
+        - if current_user == nil
+          %td
+            = link_to 'Просмотреть', category
+        - elsif current_user.role == "работник" || "работодатель"
+          %td
+            = link_to 'Просмотреть', category
+        - else
+          %td
+            = link_to 'Show', category
+          %td
+            = link_to 'Edit', edit_category_path(category)
+          %td
+            = link_to 'Destroy', category, method: :delete, data: {confirm: 'Are you sure?'}
+
+%br
+- if current_user == nil || current_user.role != "admin"
+  %td
+- else
+  = link_to 'New Category', new_category_path
