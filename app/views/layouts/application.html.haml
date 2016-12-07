@@ -18,6 +18,9 @@
           - if user_signed_in?
             .navbar-default.navbar__stretch
               %ul.nav.navbar-nav.navbar-right
+                - if user_signed_in?
+                  %li
+                    = render partial: 'task_notifications/notifications_nav'
                 %li
                   = link_to profile_path, class: "navbar-header__profile-link" do
                     - if current_user[:photo].nil?
@@ -28,7 +31,3 @@
                 %li= link_to "Выйти", destroy_user_session_path, method: :delete
 
     = yield
-
-    %p
-      - if user_signed_in?
-        = render partial: 'task_notifications/notifications_nav'
